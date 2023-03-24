@@ -18,7 +18,7 @@ public class Character : MonoBehaviour
     public CharacterControllers Controller;
     public GameObject healthBarPrefab;
     public Character target;
-    public bool isDead;
+    public bool isDead = false;
 
     public event UnityAction onTakeDamage;
     public event UnityAction onDie;
@@ -26,6 +26,7 @@ public class Character : MonoBehaviour
     protected virtual void Awake()
     {
         Controller = GetComponent<CharacterControllers>();
+        healthBarPrefab = Instantiate(healthBarPrefab,transform.position + healthBarPrefab.transform.position,Quaternion.identity,transform);
     }
 
     public virtual void SetTarget(Character t){

@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : Character
 {
-    public static Player Current;
+    public static Player current;
 
     private Animator anim;
     private float lastAttackTime;
@@ -12,11 +10,11 @@ public class Player : Character
     protected override void Awake()
     {
         base.Awake();
-        Current = this;
+        current = this;
         anim = GetComponentInChildren<Animator>();
     }
 
-    void Update()
+    private void Update()
     {
         if (target != null && !target.isDead)
         {
@@ -25,20 +23,26 @@ public class Player : Character
             {
                 Controller.StopMovement();
                 Controller.LookTowards(target.transform.position - transform.position);
+
+                // Check attack speed
                 if (Time.time - lastAttackTime > attackRate)
                 {
                     lastAttackTime = Time.time;
                     anim.SetTrigger("isAttacking");
                 }
             }
-            else Controller.MoveToTarget(target.transform);
+            else
+            {
+                Controller.MoveToTarget(target.transform);
+            }
         }
+
         anim.SetBool("isMoving", Controller.isMoving);
     }
+
     public override void Die()
     {
         base.Die();
         anim.SetBool("isDead", true);
     }
-
 }

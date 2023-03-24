@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class CharacterHelpers : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    Character character;
+    private void Awake()
     {
-        
+        character = GetComponentInParent<Character>();
+    }
+    public void OnAttack()
+    {
+        character.AttackTarget();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
