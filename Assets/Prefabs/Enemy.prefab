@@ -86,7 +86,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentHP: 100
   MaxHP: 100
-  Damage: 25
+  Damage: 10
   attackRange: 1
   attackRate: 0.5
   Controller: {fileID: 0}
