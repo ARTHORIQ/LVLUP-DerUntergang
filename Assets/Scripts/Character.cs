@@ -48,6 +48,6 @@ public class Character : MonoBehaviour
     {
         isDead = true;
         onDie?.Invoke();
-        Destroy(gameObject, 3f);
+        Destroy(gameObject, 1.5f);
     }
 }
