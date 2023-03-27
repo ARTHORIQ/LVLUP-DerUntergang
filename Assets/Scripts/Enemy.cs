@@ -23,6 +23,7 @@ public class Enemy : Character
     private void Update()
     {
         if (target == null) return;
+
         if (target.isDead)
         {
             target = null;
@@ -46,6 +47,7 @@ public class Enemy : Character
                 break;
         }
         anim.SetBool("isMoving", currentState == State.Chase);
+        Debug.Log("isMoving: " + anim.GetBool("isMoving"));
     }
 
     void IdleUpdate()
@@ -96,6 +98,7 @@ public class Enemy : Character
 
     public override void Die()
     {
+        Controller.StopMovement();
         base.Die();
         anim.SetBool("isDead", true);
     }

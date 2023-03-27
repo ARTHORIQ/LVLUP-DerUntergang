@@ -34,6 +34,7 @@ public class CharacterControllers : MonoBehaviour
 
     public void StopMovement()
     {
+        Debug.Log("Stopping movement");
         agent.isStopped = true;
         moveTarget = null;
     }
@@ -46,6 +47,8 @@ public class CharacterControllers : MonoBehaviour
             MoveToPosition(moveTarget.position);
         }
         isMoving = agent.velocity.magnitude > 0.1f;
+
+
     }
 
 }

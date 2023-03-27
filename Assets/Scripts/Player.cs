@@ -42,7 +42,10 @@ public class Player : Character
 
     public override void Die()
     {
+        Controller.StopMovement();
         base.Die();
+        Controller.isMoving = false;
         anim.SetBool("isDead", true);
+        anim.SetBool("isMoving", false);
     }
 }
